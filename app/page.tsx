@@ -771,10 +771,10 @@ export default function TiaraPage() {
                                 <div className="flex-1 p-3 flex flex-col justify-between">
                                   <div>
                                     <div className="flex items-center gap-2 mb-1">
-                                      <span className="font-bold">{cast.name}</span>
-                                      <span className="text-[10px] text-gray-400">{cast.age}歳</span>
+                                      <span className="font-bold text-gray-900">{cast.name}</span>
+                                      <span className="text-[10px] text-gray-600">{cast.age}歳</span>
                                     </div>
-                                    <span className="inline-block bg-gray-100 text-[10px] px-2 py-0.5 rounded-full">#{cast.tag}</span>
+                                    <span className="inline-block bg-gray-200 text-gray-700 text-[10px] px-2 py-0.5 rounded-full">#{cast.tag}</span>
                                   </div>
                                   <div className="flex items-center justify-between">
                                     {cast.available && (
