@@ -25,25 +25,24 @@ function PhoneInput({ onSubmit }: { onSubmit: (phone: string) => void }) {
   }
 
   return (
-    <div className="bg-white rounded-xl p-4 shadow-md">
-      <p className="text-xs text-gray-500 mb-2">ご連絡先電話番号</p>
+    <div className="bg-white rounded-xl p-4 shadow-md border border-gray-200">
+      <p className="text-xs text-gray-600 mb-2">ご連絡先電話番号</p>
       <input
         type="tel"
         value={phone}
         onChange={(e) => setPhone(e.target.value)}
         placeholder="09012345678"
-        className="w-full px-4 py-3 border border-gray-200 rounded-lg text-lg text-center tracking-wider focus:outline-none focus:border-amber-400 focus:ring-1 focus:ring-amber-400"
+        className="w-full px-4 py-3 border border-gray-300 rounded-lg text-lg text-center tracking-wider text-gray-900 focus:outline-none focus:border-amber-400 focus:ring-1 focus:ring-amber-400"
         autoFocus
       />
       <button
         onClick={handleSubmit}
         disabled={phone.replace(/[^0-9]/g, '').length < 10}
-        className="w-full mt-3 py-3 rounded-xl font-bold text-sm transition active:scale-95 disabled:opacity-40"
-        style={{ background: 'linear-gradient(135deg, #D4AF37, #F4E4BA, #D4AF37)', color: '#1A1A1A' }}
+        className="w-full mt-3 py-3 rounded-xl font-bold text-sm transition active:scale-95 disabled:opacity-40 bg-amber-400 hover:bg-amber-500 text-black"
       >
         次へ進む
       </button>
-      <p className="text-[10px] text-gray-400 mt-2 text-center">
+      <p className="text-[10px] text-gray-500 mt-2 text-center">
         ご予約確認のご連絡に使用いたします
       </p>
     </div>
@@ -692,21 +691,21 @@ export default function TiaraPage() {
               animate={{ y: 0 }}
               exit={{ y: '100%' }}
               transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-              className="w-full max-w-md h-[85vh] bg-[#F0F0F0] rounded-t-3xl overflow-hidden flex flex-col"
+              className="w-full max-w-md h-[85vh] bg-zinc-50 rounded-t-3xl overflow-hidden flex flex-col"
               onClick={(e) => e.stopPropagation()}
             >
               {/* Chat Header */}
-              <div className="bg-white px-4 py-3 flex items-center justify-between shadow-sm">
+              <div className="bg-zinc-900 px-4 py-3 flex items-center justify-between shadow-sm">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-amber-300 to-amber-500 flex items-center justify-center">
                     <span className="text-lg">👑</span>
                   </div>
                   <div>
-                    <p className="font-bold text-sm">THE TIARA Concierge</p>
-                    <p className="text-[10px] text-green-500">● オンライン</p>
+                    <p className="font-bold text-sm text-white">THE TIARA Concierge</p>
+                    <p className="text-[10px] text-emerald-400">● オンライン</p>
                   </div>
                 </div>
-                <button onClick={() => setChatOpen(false)} className="w-8 h-8 flex items-center justify-center text-gray-400 hover:text-gray-600">
+                <button onClick={() => setChatOpen(false)} className="w-8 h-8 flex items-center justify-center text-gray-400 hover:text-white">
                   ✕
                 </button>
               </div>
@@ -724,11 +723,11 @@ export default function TiaraPage() {
                       {/* Bot Message */}
                       {msg.type === 'bot' && (
                         <div className="flex gap-2">
-                          <div className="w-8 h-8 rounded-full bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center flex-shrink-0">
+                          <div className="w-8 h-8 rounded-full bg-gradient-to-br from-amber-100 to-amber-200 flex items-center justify-center flex-shrink-0 border border-amber-300">
                             <span className="text-sm">👑</span>
                           </div>
-                          <div className="bg-white rounded-2xl rounded-tl-sm px-4 py-3 max-w-[75%] shadow-sm">
-                            <p className="text-sm whitespace-pre-line">{msg.content}</p>
+                          <div className="bg-gray-100 rounded-2xl rounded-tl-sm px-4 py-3 max-w-[75%] shadow-sm border border-gray-200">
+                            <p className="text-sm whitespace-pre-line text-gray-900">{msg.content}</p>
                           </div>
                         </div>
                       )}
@@ -736,7 +735,7 @@ export default function TiaraPage() {
                       {/* User Message */}
                       {msg.type === 'user' && (
                         <div className="flex justify-end">
-                          <div className="bg-pink-500 text-white rounded-2xl rounded-tr-sm px-4 py-3 max-w-[75%]">
+                          <div className="bg-zinc-900 text-white rounded-2xl rounded-tr-sm px-4 py-3 max-w-[75%]">
                             <p className="text-sm">{msg.content}</p>
                           </div>
                         </div>
@@ -745,10 +744,10 @@ export default function TiaraPage() {
                       {/* Menu Options */}
                       {msg.type === 'menu' && (
                         <div className="flex gap-2 pl-10">
-                          <button onClick={() => handleMenuSelect('availability')} className="bg-white border border-pink-200 text-pink-500 rounded-full px-4 py-2 text-sm font-medium shadow-sm hover:bg-pink-50 transition">
+                          <button onClick={() => handleMenuSelect('availability')} className="bg-amber-400 border border-amber-500 text-black rounded-full px-4 py-2 text-sm font-bold shadow-sm hover:bg-amber-500 transition">
                             📅 出勤状況
                           </button>
-                          <button onClick={() => handleMenuSelect('search')} className="bg-white border border-pink-200 text-pink-500 rounded-full px-4 py-2 text-sm font-medium shadow-sm hover:bg-pink-50 transition">
+                          <button onClick={() => handleMenuSelect('search')} className="bg-white border border-gray-300 text-gray-800 rounded-full px-4 py-2 text-sm font-medium shadow-sm hover:bg-gray-50 transition">
                             🔍 キャスト検索
                           </button>
                         </div>
@@ -779,13 +778,13 @@ export default function TiaraPage() {
                                   </div>
                                   <div className="flex items-center justify-between">
                                     {cast.available && (
-                                      <span className="bg-pink-500 text-white text-[10px] font-bold px-2 py-1 rounded-full">
+                                      <span className="bg-emerald-500 text-white text-[10px] font-bold px-2 py-1 rounded-full">
                                         {cast.status}
                                       </span>
                                     )}
                                     <button
                                       onClick={() => handleCastSelect(cast)}
-                                      className="bg-pink-500 text-white text-xs font-bold px-3 py-1.5 rounded-full hover:bg-pink-400 transition"
+                                      className="bg-amber-400 text-black text-xs font-bold px-3 py-1.5 rounded-full hover:bg-amber-500 transition"
                                     >
                                       指名する
                                     </button>
@@ -804,16 +803,16 @@ export default function TiaraPage() {
                             <button
                               key={course.name}
                               onClick={() => handleCourseSelect(course)}
-                              className={`w-full bg-white rounded-xl p-3 flex items-center justify-between shadow-sm hover:shadow-md transition text-left ${course.popular ? 'border-2 border-pink-300' : ''}`}
+                              className={`w-full bg-white rounded-xl p-3 flex items-center justify-between shadow-sm hover:shadow-md transition text-left border ${course.popular ? 'border-2 border-amber-400' : 'border-gray-200'}`}
                             >
                               <div>
                                 <div className="flex items-center gap-2">
-                                  {course.popular && <span className="bg-pink-500 text-white text-[8px] font-bold px-1.5 py-0.5 rounded">人気</span>}
-                                  <span className="font-bold text-sm">{course.name}</span>
+                                  {course.popular && <span className="bg-amber-400 text-black text-[8px] font-bold px-1.5 py-0.5 rounded">人気</span>}
+                                  <span className="font-bold text-sm text-gray-900">{course.name}</span>
                                 </div>
-                                <span className="text-[10px] text-gray-400">{course.time}</span>
+                                <span className="text-[10px] text-gray-500">{course.time}</span>
                               </div>
-                              <span className="font-bold">¥{course.price.toLocaleString()}</span>
+                              <span className="font-bold text-gray-900">¥{course.price.toLocaleString()}</span>
                             </button>
                           ))}
                         </div>
@@ -826,7 +825,7 @@ export default function TiaraPage() {
                             <button
                               key={time}
                               onClick={() => handleTimeSelect(time)}
-                              className="bg-white border border-gray-200 rounded-full px-4 py-2 text-sm font-medium hover:bg-pink-50 hover:border-pink-300 transition"
+                              className="bg-white border border-gray-300 rounded-full px-4 py-2 text-sm font-medium text-gray-800 hover:bg-amber-50 hover:border-amber-400 transition"
                             >
                               {time}
                             </button>
@@ -844,28 +843,28 @@ export default function TiaraPage() {
                       {/* Confirmation */}
                       {msg.type === 'confirm' && msg.data && (
                         <div className="pl-10">
-                          <div className="bg-white rounded-xl p-4 shadow-md">
-                            <p className="font-bold text-sm mb-3 text-center">ご予約内容の確認</p>
-                            <div className="space-y-2 text-sm border-b border-gray-100 pb-3 mb-3">
+                          <div className="bg-white rounded-xl p-4 shadow-md border border-gray-200">
+                            <p className="font-bold text-sm mb-3 text-center text-gray-900">ご予約内容の確認</p>
+                            <div className="space-y-2 text-sm border-b border-gray-200 pb-3 mb-3">
                               <div className="flex justify-between">
-                                <span className="text-gray-500">セラピスト</span>
-                                <span className="font-medium">{msg.data.cast.name}</span>
+                                <span className="text-gray-600">セラピスト</span>
+                                <span className="font-medium text-gray-900">{msg.data.cast.name}</span>
                               </div>
                               <div className="flex justify-between">
-                                <span className="text-gray-500">コース</span>
-                                <span className="font-medium">{msg.data.course.name}（{msg.data.course.time}）</span>
+                                <span className="text-gray-600">コース</span>
+                                <span className="font-medium text-gray-900">{msg.data.course.name}（{msg.data.course.time}）</span>
                               </div>
                               <div className="flex justify-between">
-                                <span className="text-gray-500">時間</span>
-                                <span className="font-medium">{msg.data.time}〜</span>
+                                <span className="text-gray-600">時間</span>
+                                <span className="font-medium text-gray-900">{msg.data.time}〜</span>
                               </div>
                               <div className="flex justify-between">
-                                <span className="text-gray-500">場所</span>
-                                <span className="font-medium">秋葉原ルーム</span>
+                                <span className="text-gray-600">場所</span>
+                                <span className="font-medium text-gray-900">秋葉原ルーム</span>
                               </div>
                               <div className="flex justify-between">
-                                <span className="text-gray-500">電話番号</span>
-                                <span className="font-medium">{msg.data.phone}</span>
+                                <span className="text-gray-600">電話番号</span>
+                                <span className="font-medium text-gray-900">{msg.data.phone}</span>
                               </div>
                             </div>
 
@@ -899,13 +898,13 @@ export default function TiaraPage() {
                       {/* Submitting */}
                       {msg.type === 'submit' && (
                         <div className="flex gap-2">
-                          <div className="w-8 h-8 rounded-full bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center flex-shrink-0">
+                          <div className="w-8 h-8 rounded-full bg-gradient-to-br from-amber-100 to-amber-200 flex items-center justify-center flex-shrink-0 border border-amber-300">
                             <span className="text-sm">👑</span>
                           </div>
-                          <div className="bg-white rounded-2xl rounded-tl-sm px-4 py-3 shadow-sm">
+                          <div className="bg-gray-100 rounded-2xl rounded-tl-sm px-4 py-3 shadow-sm border border-gray-200">
                             <div className="flex items-center gap-2">
-                              <div className="animate-spin w-4 h-4 border-2 border-amber-400 border-t-transparent rounded-full"></div>
-                              <span className="text-sm text-gray-600">ご予約を処理中でございます...</span>
+                              <div className="animate-spin w-4 h-4 border-2 border-amber-500 border-t-transparent rounded-full"></div>
+                              <span className="text-sm text-gray-800">ご予約を処理中でございます...</span>
                             </div>
                           </div>
                         </div>
@@ -973,15 +972,15 @@ export default function TiaraPage() {
               </div>
 
               {/* Chat Input (Disabled for demo) */}
-              <div className="bg-white border-t border-gray-100 p-3">
+              <div className="bg-white border-t border-gray-200 p-3">
                 <div className="flex gap-2">
                   <input
                     type="text"
                     placeholder="メニューからお選びください"
                     disabled
-                    className="flex-1 bg-gray-100 rounded-full px-4 py-2 text-sm text-gray-400"
+                    className="flex-1 bg-gray-100 border border-gray-200 rounded-full px-4 py-2 text-sm text-gray-500"
                   />
-                  <button disabled className="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center text-gray-400">
+                  <button disabled className="w-10 h-10 bg-amber-400 rounded-full flex items-center justify-center text-black opacity-50">
                     ↑
                   </button>
                 </div>
