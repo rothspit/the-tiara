@@ -223,7 +223,7 @@ export default function TiaraPage() {
     addMessage('submit', '', { submitting: true })
 
     try {
-      const response = await fetch('/api/bookings', {
+      const response = await fetch('/api/tiara/bookings', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -273,7 +273,7 @@ export default function TiaraPage() {
     if (accept && newTime) {
       addMessage('user', `${newTime}で承知いたしました`)
       try {
-        await fetch(`/api/bookings/${currentBookingId}`, {
+        await fetch(`/api/tiara/bookings/${currentBookingId}`, {
           method: 'PATCH',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ status: 'confirmed' }),
