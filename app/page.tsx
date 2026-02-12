@@ -324,17 +324,22 @@ export default function TiaraPage() {
     <>
       {/* Splash Screen */}
       {showSplash && (
-        <div className={`fixed inset-0 z-[100] bg-white flex items-center justify-center transition-opacity duration-700 ${splashFadeOut ? 'opacity-0' : 'opacity-100'}`}>
-          <div className={`transition-all duration-1000 ${splashFadeOut ? 'opacity-0 scale-95' : 'animate-splash-logo'}`}>
-            <img src="/tiara-logo.png" alt="THE TIARA" className="w-48 md:w-64 h-auto" />
+        <div className={`fixed inset-0 z-[100] bg-black flex flex-col items-center justify-center transition-opacity duration-700 ${splashFadeOut ? 'opacity-0' : 'opacity-100'}`}>
+          <div className={`flex flex-col items-center transition-all duration-1000 ${splashFadeOut ? 'opacity-0 scale-95' : 'animate-splash-logo'}`}>
+            <h1 className="text-4xl md:text-5xl font-serif text-amber-400 tracking-[0.3em] mb-3">THE TIARA</h1>
+            <p className="text-sm font-serif text-amber-200/80 tracking-[0.25em]">至高のメンズエステ</p>
+            <div className="mt-8 animate-pulse">
+              <span className="text-xs text-amber-600/60 font-serif tracking-widest">Loading...</span>
+            </div>
           </div>
         </div>
       )}
 
       <main className="min-h-screen bg-[#F8F9FA] text-[#333333] pb-20">
         <style>{`
-          @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap');
+          @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;500;700&display=swap');
           body { font-family: 'Noto Sans JP', sans-serif; }
+          .font-serif { font-family: 'Noto Serif JP', serif; }
 
           @keyframes splashLogo {
             0% { opacity: 0; transform: scale(0.8) translateY(20px); }
