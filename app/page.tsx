@@ -32,13 +32,13 @@ function PhoneInput({ onSubmit }: { onSubmit: (phone: string) => void }) {
         value={phone}
         onChange={(e) => setPhone(e.target.value)}
         placeholder="09012345678"
-        className="w-full px-4 py-3 border border-gray-300 rounded-lg text-lg text-center tracking-wider text-gray-900 focus:outline-none focus:border-amber-400 focus:ring-1 focus:ring-amber-400"
+        className="w-full px-4 py-3 border border-gray-300 rounded-lg text-lg text-center tracking-wider text-gray-900 focus:outline-none focus:border-pink-400 focus:ring-1 focus:ring-pink-400"
         autoFocus
       />
       <button
         onClick={handleSubmit}
         disabled={phone.replace(/[^0-9]/g, '').length < 10}
-        className="w-full mt-3 py-3 rounded-xl font-bold text-sm transition active:scale-95 disabled:opacity-40 bg-amber-400 hover:bg-amber-500 text-black"
+        className="w-full mt-3 py-3 rounded-xl font-bold text-sm transition active:scale-95 disabled:opacity-40 bg-pink-500 hover:bg-pink-600 text-white"
       >
         次へ進む
       </button>
@@ -324,12 +324,12 @@ export default function TiaraPage() {
     <>
       {/* Splash Screen */}
       {showSplash && (
-        <div className={`fixed inset-0 z-[100] bg-black flex flex-col items-center justify-center transition-opacity duration-700 ${splashFadeOut ? 'opacity-0' : 'opacity-100'}`}>
+        <div className={`fixed inset-0 z-[100] bg-white flex flex-col items-center justify-center transition-opacity duration-700 ${splashFadeOut ? 'opacity-0' : 'opacity-100'}`}>
           <div className={`flex flex-col items-center transition-all duration-1000 ${splashFadeOut ? 'opacity-0 scale-95' : 'animate-splash-logo'}`}>
-            <h1 className="text-4xl md:text-5xl font-serif text-amber-400 tracking-[0.3em] mb-3">THE TIARA</h1>
-            <p className="text-sm font-serif text-amber-200/80 tracking-[0.25em]">至高のメンズエステ</p>
+            <h1 className="text-4xl md:text-5xl font-serif text-pink-500 tracking-[0.3em] mb-3">THE TIARA</h1>
+            <p className="text-sm font-serif text-gray-600 tracking-[0.25em]">至高のメンズエステ</p>
             <div className="mt-8 animate-pulse">
-              <span className="text-xs text-amber-600/60 font-serif tracking-widest">Loading...</span>
+              <span className="text-xs text-pink-400 font-serif tracking-widest">Loading...</span>
             </div>
           </div>
         </div>
@@ -700,17 +700,17 @@ export default function TiaraPage() {
               onClick={(e) => e.stopPropagation()}
             >
               {/* Chat Header */}
-              <div className="bg-zinc-900 px-4 py-3 flex items-center justify-between shadow-sm">
+              <div className="bg-white px-4 py-3 flex items-center justify-between shadow-sm border-b border-gray-100">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-amber-300 to-amber-500 flex items-center justify-center">
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-pink-400 to-pink-500 flex items-center justify-center">
                     <span className="text-lg">👑</span>
                   </div>
                   <div>
-                    <p className="font-bold text-sm text-white">THE TIARA Concierge</p>
-                    <p className="text-[10px] text-emerald-400">● オンライン</p>
+                    <p className="font-bold text-sm text-gray-900">THE TIARA Concierge</p>
+                    <p className="text-[10px] text-emerald-500">● オンライン</p>
                   </div>
                 </div>
-                <button onClick={() => setChatOpen(false)} className="w-8 h-8 flex items-center justify-center text-gray-400 hover:text-white">
+                <button onClick={() => setChatOpen(false)} className="w-8 h-8 flex items-center justify-center text-gray-400 hover:text-gray-600">
                   ✕
                 </button>
               </div>
@@ -728,7 +728,7 @@ export default function TiaraPage() {
                       {/* Bot Message */}
                       {msg.type === 'bot' && (
                         <div className="flex gap-2">
-                          <div className="w-8 h-8 rounded-full bg-gradient-to-br from-amber-100 to-amber-200 flex items-center justify-center flex-shrink-0 border border-amber-300">
+                          <div className="w-8 h-8 rounded-full bg-gradient-to-br from-pink-100 to-pink-200 flex items-center justify-center flex-shrink-0 border border-pink-300">
                             <span className="text-sm">👑</span>
                           </div>
                           <div className="bg-gray-100 rounded-2xl rounded-tl-sm px-4 py-3 max-w-[75%] shadow-sm border border-gray-200">
@@ -740,7 +740,7 @@ export default function TiaraPage() {
                       {/* User Message */}
                       {msg.type === 'user' && (
                         <div className="flex justify-end">
-                          <div className="bg-zinc-900 text-white rounded-2xl rounded-tr-sm px-4 py-3 max-w-[75%]">
+                          <div className="bg-pink-500 text-white rounded-2xl rounded-tr-sm px-4 py-3 max-w-[75%]">
                             <p className="text-sm">{msg.content}</p>
                           </div>
                         </div>
@@ -749,10 +749,10 @@ export default function TiaraPage() {
                       {/* Menu Options */}
                       {msg.type === 'menu' && (
                         <div className="flex gap-2 pl-10">
-                          <button onClick={() => handleMenuSelect('availability')} className="bg-amber-400 border border-amber-500 text-black rounded-full px-4 py-2 text-sm font-bold shadow-sm hover:bg-amber-500 transition">
+                          <button onClick={() => handleMenuSelect('availability')} className="bg-pink-500 border border-pink-600 text-white rounded-full px-4 py-2 text-sm font-bold shadow-sm hover:bg-pink-600 transition">
                             📅 出勤状況
                           </button>
-                          <button onClick={() => handleMenuSelect('search')} className="bg-white border border-gray-300 text-gray-800 rounded-full px-4 py-2 text-sm font-medium shadow-sm hover:bg-gray-50 transition">
+                          <button onClick={() => handleMenuSelect('search')} className="bg-white border border-pink-300 text-pink-500 rounded-full px-4 py-2 text-sm font-medium shadow-sm hover:bg-pink-50 transition">
                             🔍 キャスト検索
                           </button>
                         </div>
@@ -783,13 +783,13 @@ export default function TiaraPage() {
                                   </div>
                                   <div className="flex items-center justify-between">
                                     {cast.available && (
-                                      <span className="bg-emerald-500 text-white text-[10px] font-bold px-2 py-1 rounded-full">
+                                      <span className="bg-pink-500 text-white text-[10px] font-bold px-2 py-1 rounded-full">
                                         {cast.status}
                                       </span>
                                     )}
                                     <button
                                       onClick={() => handleCastSelect(cast)}
-                                      className="bg-amber-400 text-black text-xs font-bold px-3 py-1.5 rounded-full hover:bg-amber-500 transition"
+                                      className="bg-pink-500 text-white text-xs font-bold px-3 py-1.5 rounded-full hover:bg-pink-600 transition"
                                     >
                                       指名する
                                     </button>
@@ -808,11 +808,11 @@ export default function TiaraPage() {
                             <button
                               key={course.name}
                               onClick={() => handleCourseSelect(course)}
-                              className={`w-full bg-white rounded-xl p-3 flex items-center justify-between shadow-sm hover:shadow-md transition text-left border ${course.popular ? 'border-2 border-amber-400' : 'border-gray-200'}`}
+                              className={`w-full bg-white rounded-xl p-3 flex items-center justify-between shadow-sm hover:shadow-md transition text-left border ${course.popular ? 'border-2 border-pink-400' : 'border-gray-200'}`}
                             >
                               <div>
                                 <div className="flex items-center gap-2">
-                                  {course.popular && <span className="bg-amber-400 text-black text-[8px] font-bold px-1.5 py-0.5 rounded">人気</span>}
+                                  {course.popular && <span className="bg-pink-500 text-white text-[8px] font-bold px-1.5 py-0.5 rounded">人気</span>}
                                   <span className="font-bold text-sm text-gray-900">{course.name}</span>
                                 </div>
                                 <span className="text-[10px] text-gray-500">{course.time}</span>
@@ -830,7 +830,7 @@ export default function TiaraPage() {
                             <button
                               key={time}
                               onClick={() => handleTimeSelect(time)}
-                              className="bg-white border border-gray-300 rounded-full px-4 py-2 text-sm font-medium text-gray-800 hover:bg-amber-50 hover:border-amber-400 transition"
+                              className="bg-white border border-gray-300 rounded-full px-4 py-2 text-sm font-medium text-gray-800 hover:bg-pink-50 hover:border-pink-400 transition"
                             >
                               {time}
                             </button>
@@ -874,24 +874,23 @@ export default function TiaraPage() {
                             </div>
 
                             {/* Point Usage Option */}
-                            <div className="bg-gradient-to-r from-amber-50 to-yellow-50 rounded-lg p-3 mb-3 border border-amber-200">
-                              <p className="text-xs font-bold text-amber-700 mb-1">🎁 会員登録特典</p>
-                              <p className="text-[10px] text-amber-600">今なら2,000ptをすぐに使えます！</p>
+                            <div className="bg-gradient-to-r from-pink-50 to-rose-50 rounded-lg p-3 mb-3 border border-pink-200">
+                              <p className="text-xs font-bold text-pink-600 mb-1">🎁 会員登録特典</p>
+                              <p className="text-[10px] text-pink-500">今なら2,000ptをすぐに使えます！</p>
                             </div>
 
                             <div className="space-y-2">
                               <button
                                 onClick={() => handleConfirm(true)}
                                 disabled={isSubmitting}
-                                className="w-full py-3 rounded-xl font-bold text-sm transition active:scale-95 disabled:opacity-50"
-                                style={{ background: 'linear-gradient(135deg, #D4AF37, #F4E4BA, #D4AF37)', color: '#1A1A1A' }}
+                                className="w-full py-3 rounded-xl font-bold text-sm transition active:scale-95 disabled:opacity-50 bg-pink-500 hover:bg-pink-600 text-white"
                               >
                                 会員登録して2,000ptを使う
                               </button>
                               <button
                                 onClick={() => handleConfirm(false)}
                                 disabled={isSubmitting}
-                                className="w-full py-3 rounded-xl font-bold text-sm border border-gray-200 hover:bg-gray-50 transition disabled:opacity-50"
+                                className="w-full py-3 rounded-xl font-bold text-sm border border-pink-300 text-pink-500 hover:bg-pink-50 transition disabled:opacity-50"
                               >
                                 ゲストとして予約（ポイントなし）
                               </button>
@@ -903,12 +902,12 @@ export default function TiaraPage() {
                       {/* Submitting */}
                       {msg.type === 'submit' && (
                         <div className="flex gap-2">
-                          <div className="w-8 h-8 rounded-full bg-gradient-to-br from-amber-100 to-amber-200 flex items-center justify-center flex-shrink-0 border border-amber-300">
+                          <div className="w-8 h-8 rounded-full bg-gradient-to-br from-pink-100 to-pink-200 flex items-center justify-center flex-shrink-0 border border-pink-300">
                             <span className="text-sm">👑</span>
                           </div>
                           <div className="bg-gray-100 rounded-2xl rounded-tl-sm px-4 py-3 shadow-sm border border-gray-200">
                             <div className="flex items-center gap-2">
-                              <div className="animate-spin w-4 h-4 border-2 border-amber-500 border-t-transparent rounded-full"></div>
+                              <div className="animate-spin w-4 h-4 border-2 border-pink-500 border-t-transparent rounded-full"></div>
                               <span className="text-sm text-gray-800">ご予約を処理中でございます...</span>
                             </div>
                           </div>
@@ -918,17 +917,17 @@ export default function TiaraPage() {
                       {/* Waiting for Store Confirmation */}
                       {msg.type === 'waiting' && (
                         <div className="pl-10">
-                          <div className="bg-gradient-to-r from-amber-900/90 to-gray-900 rounded-xl p-4 shadow-lg border border-amber-700/30">
+                          <div className="bg-gradient-to-r from-pink-50 to-rose-50 rounded-xl p-4 shadow-lg border border-pink-200">
                             <div className="flex items-center gap-3 mb-3">
-                              <div className="w-10 h-10 rounded-full flex items-center justify-center" style={{ background: 'linear-gradient(135deg, #D4AF37, #F4E4BA)' }}>
-                                <span className="animate-pulse">⏳</span>
+                              <div className="w-10 h-10 rounded-full flex items-center justify-center bg-pink-500">
+                                <span className="animate-pulse text-white">⏳</span>
                               </div>
                               <div>
-                                <p className="font-bold text-amber-300 text-sm">店舗確認中</p>
-                                <p className="text-[10px] text-amber-400/70">ステータスはリアルタイムで更新されます</p>
+                                <p className="font-bold text-pink-600 text-sm">店舗確認中</p>
+                                <p className="text-[10px] text-pink-400">ステータスはリアルタイムで更新されます</p>
                               </div>
                             </div>
-                            <p className="text-xs text-amber-200/80 leading-relaxed">
+                            <p className="text-xs text-gray-600 leading-relaxed">
                               ご予約リクエストを受け付けました。<br/>
                               店舗スタッフが確認次第、ステータスが更新されます。<br/>
                               そのままお待ちくださいませ。
@@ -940,29 +939,28 @@ export default function TiaraPage() {
                       {/* Time Proposal */}
                       {msg.type === 'proposal' && msg.data && (
                         <div className="pl-10">
-                          <div className="bg-gradient-to-r from-blue-900/90 to-gray-900 rounded-xl p-4 shadow-lg border border-blue-700/30">
-                            <p className="font-bold text-blue-300 text-sm mb-2">🕒 時間調整のご提案</p>
-                            <p className="text-blue-200 text-sm mb-3">
-                              <span className="line-through text-gray-500">{msg.data.original_time}</span>
+                          <div className="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-4 shadow-lg border border-blue-200">
+                            <p className="font-bold text-blue-600 text-sm mb-2">🕒 時間調整のご提案</p>
+                            <p className="text-gray-700 text-sm mb-3">
+                              <span className="line-through text-gray-400">{msg.data.original_time}</span>
                               {' → '}
-                              <span className="font-bold text-amber-300">{msg.data.new_time}</span>
+                              <span className="font-bold text-pink-500">{msg.data.new_time}</span>
                             </p>
                             {msg.data.message && (
-                              <p className="text-xs text-blue-300/80 mb-4 border-l-2 border-blue-500 pl-2">
+                              <p className="text-xs text-gray-600 mb-4 border-l-2 border-blue-400 pl-2">
                                 {msg.data.message}
                               </p>
                             )}
                             <div className="flex gap-2">
                               <button
                                 onClick={() => handleProposalResponse(true, msg.data.new_time)}
-                                className="flex-1 py-2 rounded-lg text-sm font-bold transition active:scale-95"
-                                style={{ background: 'linear-gradient(135deg, #D4AF37, #F4E4BA)', color: '#1A1A1A' }}
+                                className="flex-1 py-2 rounded-lg text-sm font-bold transition active:scale-95 bg-pink-500 hover:bg-pink-600 text-white"
                               >
                                 承諾する
                               </button>
                               <button
                                 onClick={() => handleProposalResponse(false)}
-                                className="flex-1 py-2 rounded-lg text-sm font-bold border border-gray-600 text-gray-300 hover:bg-gray-800 transition"
+                                className="flex-1 py-2 rounded-lg text-sm font-bold border border-gray-300 text-gray-600 hover:bg-gray-100 transition"
                               >
                                 別の時間を希望
                               </button>
@@ -985,7 +983,7 @@ export default function TiaraPage() {
                     disabled
                     className="flex-1 bg-gray-100 border border-gray-200 rounded-full px-4 py-2 text-sm text-gray-500"
                   />
-                  <button disabled className="w-10 h-10 bg-amber-400 rounded-full flex items-center justify-center text-black opacity-50">
+                  <button disabled className="w-10 h-10 bg-pink-500 rounded-full flex items-center justify-center text-white opacity-50">
                     ↑
                   </button>
                 </div>
