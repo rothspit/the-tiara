@@ -23,7 +23,7 @@ export default function CardPayment() {
           </div>
 
           <div className="text-sm text-slate-700 space-y-2 font-bold leading-relaxed">
-            <p>決済金額を <a href="tel:05017459665" className="text-blue-600 underline">お電話 (050-1745-9665)</a> にてご確認ください。</p>
+            <p>決済金額を <a href="tel:05017438883" className="text-blue-600 underline">お電話 (050-1743-8883)</a> にてご確認ください。</p>
             <p>※ 承認が取れてからのご案内となります。</p>
             <p className="text-slate-900 border-b-2 border-yellow-400 inline-block pb-1">
               ご案内前に必ずお手続きをお願い致します。

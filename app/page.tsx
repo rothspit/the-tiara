@@ -209,7 +209,7 @@ export default function TiaraPage() {
     setPhoneNumber(phone)
     addMessage('user', phone)
     setTimeout(() => {
-      addMessage('bot', `ありがとうございます。\n\n📍 場所: 秋葉原プライベートルーム\n（詳細はご予約確定後にご案内いたします）`)
+      addMessage('bot', `ありがとうございます。\n\n📍 出張先: ご指定のホテル・ご自宅等（西船橋エリア）\nご予約確定後、詳細をご案内いたします。`)
       setTimeout(() => addMessage('confirm', '', { cast: selectedCast, course: selectedCourse, time: selectedTime, phone }), 800)
     }, 500)
   }
@@ -610,10 +610,15 @@ export default function TiaraPage() {
         <section className="py-6 px-4">
           <div className="bg-white rounded-xl p-4 mb-4 shadow-sm">
             <h3 className="font-bold text-sm mb-3 flex items-center gap-2">
-              <span>📍</span> アクセス
+              <span>📍</span> 西船橋からのアクセス
             </h3>
-            <p className="text-sm text-gray-600 mb-2">JR秋葉原駅 電気街口より徒歩3分</p>
-            <p className="text-[10px] text-gray-400">※詳細な住所はご予約時にお伝えします</p>
+            <p className="text-sm text-gray-600 mb-3">JR西船橋駅 北口3歩程度</p>
+            <div className="pt-3 border-t border-gray-100">
+              <p className="text-sm text-gray-400 mb-1">お問い合わせ番号</p>
+              <a href="tel:05017438883" className="text-lg font-bold text-pink-600 tracking-wide">
+                050-1743-8883
+              </a>
+            </div>
             <div className="mt-3 pt-3 border-t border-gray-100">
               <p className="text-sm"><span className="text-gray-400">営業時間:</span> 12:00 - 05:00</p>
               <p className="text-sm"><span className="text-gray-400">定休日:</span> 年中無休</p>
@@ -865,7 +870,7 @@ export default function TiaraPage() {
                               </div>
                               <div className="flex justify-between">
                                 <span className="text-gray-600">場所</span>
-                                <span className="font-medium text-gray-900">秋葉原ルーム</span>
+                                <span className="font-medium text-gray-900">出張（ご指定場所）</span>
                               </div>
                               <div className="flex justify-between">
                                 <span className="text-gray-600">電話番号</span>

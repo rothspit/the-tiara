@@ -13,8 +13,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'アイドル学園 | 船橋の制服コンセプト・デリヘル',
-  description: '船橋駅徒歩5分。現役女子大生・若手中心の制服専門デリヘル「アイドル学園」の公式サイトです。',
+  title: 'THE TIARA (ザ・ティアラ) | 西船橋の最高級メンズエステ',
+  description: '西船橋エリアの完全個室メンズエステ THE TIARA。厳選セラピストによる極上のアロマトリートメントをご提供します。',
 };
 
 export default function RootLayout({
@@ -23,7 +23,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="ja">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
@@ -53,7 +53,7 @@ export default function RootLayout({
             </div>
 
             <p className="text-xs text-slate-600">
-              &copy; 2026 IDOL GAKUEN. All rights reserved.
+              &copy; 2026 THE TIARA. All rights reserved.
             </p>
           </div>
         </footer>
