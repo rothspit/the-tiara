@@ -40,3 +40,6 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 .env*.local
+
+# CRM連携プロンプト（シークレット含む）
+CURSOR_PROMPT_CRM_RESERVE.md

@@ -1,0 +1,64 @@
+import Image from 'next/image'
+import Link from 'next/link'
+import { StitchShell } from '@/components/tiara/StitchShell'
+import { getAllTiaraCasts } from '@/lib/tiara-casts'
+
+export default async function CastListPage() {
+  const casts = await getAllTiaraCasts()
+
+  return (
+    <StitchShell active="cast">
+      <div className="px-4 py-8 max-w-5xl mx-auto">
+        <h1 className="text-2xl font-bold text-gray-900 mb-2">セラピスト一覧</h1>
+        <p className="text-xs text-gray-400 uppercase tracking-widest mb-8">Cast</p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {casts.map((cast) => {
+            const card = (
+              <div className="rounded-xl overflow-hidden bg-white border border-gray-200 shadow-sm">
+                <div className="relative h-72 bg-gray-100">
+                  <Image
+                    src={cast.image}
+                    alt={cast.name}
+                    fill
+                    className="object-cover object-top"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    unoptimized={cast.image.startsWith('/cast/')}
+                  />
+                </div>
+                <div className="p-4">
+                  <h2 className="font-bold text-lg">
+                    {cast.name}{' '}
+                    <span className="text-sm font-normal text-gray-500">（{cast.age}歳）</span>
+                  </h2>
+                  {cast.height && (
+                    <p className="text-xs text-gray-500 mt-1">T{cast.height}</p>
+                  )}
+                  <div className="flex flex-wrap gap-1 mt-2">
+                    {cast.tags.map((tag) => (
+                      <span key={tag} className="bg-pink-50 text-[10px] px-2 py-1 rounded">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                  {cast.isPlaceholder && (
+                    <p className="text-[10px] text-gray-400 mt-2">※ 表示用（予約不可）</p>
+                  )}
+                </div>
+              </div>
+            )
+
+            if (cast.isPlaceholder) {
+              return <div key={cast.id}>{card}</div>
+            }
+
+            return (
+              <Link key={cast.id} href={`/cast/${cast.id}`} className="block hover:opacity-95">
+                {card}
+              </Link>
+            )
+          })}
+        </div>
+      </div>
+    </StitchShell>
+  )
+}
