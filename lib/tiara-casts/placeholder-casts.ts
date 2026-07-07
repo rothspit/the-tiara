@@ -82,7 +82,7 @@ export function placeholderScheduleForDate(
   const startMinutes = 12 * 60 + (h % 12) * 30
   // 7h / 7.5h / 8h / 8.5h / 9h（平均8h）
   const durationOptions = [420, 450, 480, 510, 540]
-  const durationMinutes = durationOptions[(h >> 4) % durationOptions.length]
+  const durationMinutes = durationOptions[(h >>> 0) % durationOptions.length]
 
   return slotFromStartAndDuration(startMinutes, durationMinutes)
 }

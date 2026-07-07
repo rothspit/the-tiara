@@ -36,6 +36,7 @@ type WeekScheduleCast = {
   photo_url?: string | null
   start_time?: string | null
   end_time?: string | null
+  end_day_offset?: number | null
   height?: number | null
   wait_status?: number
   attend_end_time?: string | null
@@ -51,14 +52,41 @@ type WeekScheduleResponse = {
   >
 }
 
-function formatEndTime(end: string | null | undefined): string {
+function formatEndTime(end: string | null | undefined, endDayOffset = 0): string {
   if (!end) {
     return 'LAST'
   }
-  if (end === '06:00' || end === '00:00') {
-    return '翌06:00'
+  const raw = end.length >= 5 ? end.slice(0, 5) : end
+  if (Number(endDayOffset) >= 1) {
+    return raw === '00:00' ? '翌0:00' : `翌${raw.replace(/^0/, '')}`
   }
-  return end.length >= 5 ? end.slice(0, 5) : end
+  return raw
+}
+
+function formatScheduleSlot(
+  start: string,
+  end: string | null | undefined,
+  endDayOffset = 0,
+): CastScheduleSlot {
+  const startClock = start.slice(0, 5)
+  let endClock = formatEndTime(end ?? null, endDayOffset)
+
+  if (Number(endDayOffset) < 1 && end) {
+    const endRaw = end.slice(0, 5)
+    const [sh, sm] = startClock.split(':').map(Number)
+    const [eh, em] = endRaw.split(':').map(Number)
+    if (
+      Number.isFinite(sh) &&
+      Number.isFinite(sm) &&
+      Number.isFinite(eh) &&
+      Number.isFinite(em) &&
+      eh * 60 + em <= sh * 60 + sm
+    ) {
+      endClock = endRaw === '00:00' ? '翌0:00' : `翌${endRaw.replace(/^0/, '')}`
+    }
+  }
+
+  return { start: startClock, end: endClock }
 }
 
 function buildScheduleFromWeek(
@@ -77,10 +105,11 @@ function buildScheduleFromWeek(
     }
     const slot: CastScheduleSlot = useRinaFixed
       ? RINA_FIXED_SLOT
-      : {
-          start: row.start_time.slice(0, 5),
-          end: formatEndTime(row.end_time ?? null),
-        }
+      : formatScheduleSlot(
+          row.start_time,
+          row.end_time ?? null,
+          row.end_day_offset ?? 0,
+        )
     if (todayStr && dateStr === todayStr && row.wait_status != null) {
       slot.waitStatus = row.wait_status
       slot.attendEndTime = row.attend_end_time ?? null
