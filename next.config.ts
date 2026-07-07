@@ -13,6 +13,16 @@ const nextConfig: NextConfig = {
         hostname: 'crm.st-online.jp',
         pathname: '/storage/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'crm.h-mitsu.com',
+        pathname: '/cast-media/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'crm.st-online.jp',
+        pathname: '/cast-media/**',
+      },
     ],
   },
 }
