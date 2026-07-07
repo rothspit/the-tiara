@@ -34,22 +34,22 @@ export function CastCard({ cast, today }: Props) {
         />
       </div>
       <div className="p-4">
-        <h3 className="font-bold text-lg text-gray-900">
+        <h3 className="font-bold text-lg text-on-surface">
           {cast.name}{' '}
-          <span className="text-sm font-normal text-gray-500">（{cast.age}歳）</span>
+          <span className="text-sm font-normal text-secondary">（{cast.age}歳）</span>
         </h3>
         {hours && (
-          <p className="text-sm font-bold text-pink-600 mt-1">{hours}</p>
+          <p className="text-sm font-bold text-primary mt-1">{hours}</p>
         )}
         {cast.message && (
-          <p className="text-xs text-gray-500 mt-1 line-clamp-2">{cast.message}</p>
+          <p className="text-xs text-secondary mt-1 line-clamp-2">{cast.message}</p>
         )}
         {cast.tags.length > 0 && (
           <div className="mt-3 flex flex-wrap gap-1">
             {cast.tags.slice(0, 2).map((tag) => (
               <span
                 key={tag}
-                className="bg-pink-50 text-[10px] px-2 py-1 rounded text-gray-600"
+                className="bg-primary-container text-[10px] px-2 py-1 rounded text-on-primary-container"
               >
                 {tag}
               </span>
@@ -62,7 +62,7 @@ export function CastCard({ cast, today }: Props) {
 
   if (cast.isPlaceholder) {
     return (
-      <div className="flex-shrink-0 w-64 rounded-xl overflow-hidden bg-white border border-gray-200 shadow-sm opacity-95">
+      <div className="flex-shrink-0 w-64 rounded-xl overflow-hidden bg-white border border-outline-subtle shadow-sm opacity-95">
         {inner}
       </div>
     )
@@ -71,7 +71,7 @@ export function CastCard({ cast, today }: Props) {
   return (
     <Link
       href={`/cast/${cast.id}`}
-      className="flex-shrink-0 w-64 rounded-xl overflow-hidden bg-white border border-gray-200 shadow-sm hover:border-pink-400 transition-colors"
+      className="flex-shrink-0 w-64 rounded-xl overflow-hidden bg-white border border-outline-subtle shadow-sm hover:border-primary transition-colors"
     >
       {inner}
     </Link>

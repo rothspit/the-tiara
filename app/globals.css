@@ -1,27 +1,58 @@
 @import "tailwindcss";
 
+/* Stitch 最終版 — スカイブルー（lib/stitch/pages.ts と同系統） */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --tiara-primary: #3ba9d6;
+  --tiara-primary-bright: #4fb3d9;
+  --tiara-primary-dark: #2e8eb8;
+  --tiara-on-primary: #ffffff;
+  --tiara-primary-container: #dceef8;
+  --tiara-on-primary-container: #0c4a6e;
+  --tiara-secondary: #64748b;
+  --tiara-surface: #ffffff;
+  --tiara-surface-variant: #f0f7fb;
+  --tiara-on-surface: #1e293b;
+  --tiara-outline-subtle: #cbd5e1;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-primary: var(--tiara-primary);
+  --color-primary-bright: var(--tiara-primary-bright);
+  --color-primary-dark: var(--tiara-primary-dark);
+  --color-on-primary: var(--tiara-on-primary);
+  --color-primary-container: var(--tiara-primary-container);
+  --color-on-primary-container: var(--tiara-on-primary-container);
+  --color-secondary: var(--tiara-secondary);
+  --color-surface: var(--tiara-surface);
+  --color-surface-variant: var(--tiara-surface-variant);
+  --color-on-surface: var(--tiara-on-surface);
+  --color-outline-subtle: var(--tiara-outline-subtle);
+  --color-background: #ffffff;
+  --color-foreground: var(--tiara-on-surface);
+
+  --font-sans: var(--font-noto), 'Noto Sans JP', ui-sans-serif, system-ui, sans-serif;
+  --font-headline-lg-mobile: var(--font-noto), 'Noto Sans JP', ui-sans-serif, system-ui, sans-serif;
+
+  --text-headline-lg-mobile: 1.625rem;
+  --text-headline-lg-mobile--line-height: 1.25;
+  --text-title-md: 1.125rem;
+  --text-title-md--line-height: 1.35;
+  --text-label-sm: 0.75rem;
+  --text-label-sm--line-height: 1.4;
+
+  --spacing-section-padding: 3rem;
+  --spacing-margin-mobile: 1rem;
+
+  --max-width-container-max: 72rem;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html.light {
+  color-scheme: light;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: #ffffff;
+  color: var(--tiara-on-surface);
   font-family: var(--font-noto), 'Noto Sans JP', sans-serif;
 }
 
