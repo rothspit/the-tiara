@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import type { TiaraCast } from '@/lib/tiara-casts/types'
 import { formatJapaneseDate, getCastTodayHours } from '@/lib/tiara-casts'
+import { businessToday } from '@/lib/business-date'
 
 type Props = {
   cast: TiaraCast
@@ -9,7 +10,7 @@ type Props = {
 
 export function CastProfile({ cast }: Props) {
   const scheduleDates = Object.keys(cast.schedule).sort()
-  const today = new Date(Date.now() - 8 * 60 * 60 * 1000).toISOString().slice(0, 10)
+  const today = businessToday()
   const todayHours = getCastTodayHours(cast, today)
 
   return (
@@ -40,7 +41,7 @@ export function CastProfile({ cast }: Props) {
         <div className="bg-white rounded-2xl border shadow-lg p-6 md:p-8 mb-6">
           {todayHours && (
             <div className="flex flex-wrap gap-3 mb-6">
-              <span className="inline-flex items-center gap-1 bg-pink-50 text-pink-700 px-4 py-2 rounded-full text-sm font-bold">
+              <span className="inline-flex items-center gap-1 bg-primary-container text-primary px-4 py-2 rounded-full text-sm font-bold">
                 <span className="material-symbols-outlined text-base">schedule</span>
                 {todayHours}
               </span>
@@ -51,13 +52,13 @@ export function CastProfile({ cast }: Props) {
           <div className="grid grid-cols-2 gap-3 mt-8">
             <Link
               href={`/reserve/web?cast=${cast.id}`}
-              className="col-span-2 md:col-span-1 bg-pink-600 text-white py-4 rounded-xl font-bold text-center"
+              className="col-span-2 md:col-span-1 bg-primary text-on-primary py-4 rounded-xl font-bold text-center"
             >
               WEB予約
             </Link>
             <Link
               href="/reserve"
-              className="col-span-2 md:col-span-1 border-2 border-pink-600 text-pink-600 py-4 rounded-xl font-bold text-center"
+              className="col-span-2 md:col-span-1 border-2 border-primary text-primary py-4 rounded-xl font-bold text-center"
             >
               チャットで予約
             </Link>
@@ -76,7 +77,7 @@ export function CastProfile({ cast }: Props) {
                     className="flex justify-between items-center py-3 border-b border-gray-100 last:border-0"
                   >
                     <span className="font-medium">{formatJapaneseDate(d)}</span>
-                    <span className="text-sm font-bold text-pink-600">{hours}</span>
+                    <span className="text-sm font-bold text-primary">{hours}</span>
                   </div>
                 )
               })}

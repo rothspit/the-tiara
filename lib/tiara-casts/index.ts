@@ -2,6 +2,7 @@ import { fetchCrmTiaraCastById, fetchCrmTiaraCasts } from './crm-casts'
 import { getPlaceholderCastsForWeek } from './placeholder-casts'
 import { mondayOf, weekDatesFromMonday } from './schedule-utils'
 import type { TiaraCast } from './types'
+import { businessToday } from '@/lib/business-date'
 
 export type { TiaraCast, CastScheduleSlot, PlaceholderCastDef } from './types'
 export {
@@ -9,12 +10,6 @@ export {
   isPlaceholdersEnabled,
   isPlaceholderWorkingOnDate,
 } from './placeholder-casts'
-
-function businessToday(): string {
-  const now = new Date()
-  now.setHours(now.getHours() - 8)
-  return now.toISOString().slice(0, 10)
-}
 
 /** 前後2週を含む5週分（週間表の前後ナビ用） */
 function scheduleSpanDates(baseDateStr: string): string[] {

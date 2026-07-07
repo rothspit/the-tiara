@@ -1,14 +1,9 @@
 import type { CastScheduleSlot, TiaraCast } from './types'
+import { businessToday } from '@/lib/business-date'
 
 const CRM_URL = (process.env.CRM_API_URL || 'https://crm.st-online.jp').replace(/\/$/, '')
 const STORE_CODE = 'the_tiara'
 const STORE_ID = parseInt(process.env.CRM_TIARA_STORE_ID || '8', 10)
-
-function businessToday(): string {
-  const now = new Date()
-  now.setHours(now.getHours() - 8)
-  return now.toISOString().slice(0, 10)
-}
 
 /** りな：ティアラ表示はデリヘル同様 16:00〜翌06:00 固定 */
 const RINA_CAST_ID = parseInt(process.env.CRM_RINA_CAST_ID || '1522', 10)
