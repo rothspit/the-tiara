@@ -3,14 +3,11 @@
 import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import { StitchShell } from '@/components/tiara/StitchShell'
+import { TIARA_RESERVE_COURSES } from '@/lib/tiara-courses'
 
 type Step = 'cast' | 'course' | 'time' | 'phone' | 'confirm' | 'waiting'
 
-const COURSES = [
-  { name: 'スタンダード', time: '70分', price: 18000 },
-  { name: 'プレミアム', time: '100分', price: 26000, popular: true },
-  { name: 'VIP', time: '150分', price: 50000 },
-]
+const COURSES = TIARA_RESERVE_COURSES
 
 const TIMES = ['14:00', '15:00', '16:00', '17:00', '18:00', '19:00', '20:00', '21:00']
 
@@ -149,13 +146,16 @@ export function TiaraReserveChat({ preselectedCastId, casts = [] }: Props) {
                 <div className="grid gap-2">
                   {COURSES.map((co) => (
                     <button
-                      key={co.name}
+                      key={`${co.name}-${co.time}-${co.price}`}
                       type="button"
                       onClick={() => { setSelectedCourse(co); setStep('time') }}
-                      className="text-left px-4 py-3 rounded-xl border border-outline-subtle hover:border-primary"
+                      className="text-left px-4 py-3 rounded-xl border border-outline-subtle hover:border-primary relative"
                     >
+                      {co.popular && (
+                        <span className="absolute right-3 top-3 text-[10px] font-bold text-primary">人気</span>
+                      )}
                       <span className="font-bold">{co.name}</span>
-                      <span className="text-sm text-secondary ml-2">{co.time} ¥{co.price.toLocaleString()}</span>
+                      <span className="text-sm text-secondary ml-2">¥{co.price.toLocaleString()}</span>
                     </button>
                   ))}
                 </div>
